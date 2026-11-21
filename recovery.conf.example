@@ -1,0 +1,9 @@
+# PostgreSQL 12+ example. Adapt paths and timestamp before use.
+# Put these settings in postgresql.conf or an included config file.
+restore_command = 'cp /archive/wal/%f %p'
+recovery_target_time = '2026-11-21 18:00:00+05:30'
+recovery_target_action = 'pause'
+
+# After restoring the base backup and applying settings, create an empty
+# file named recovery.signal in the restored data directory.
+# PostgreSQL 11 and earlier use the legacy recovery.conf mechanism.
